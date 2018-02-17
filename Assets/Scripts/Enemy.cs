@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class Enemy {
 
+
     private GameObject enemy;
+
+    private GameObject target;
 
     private int speed, walkingRange, hitPoints, damage;
 
     private Animator anim;
 
-    private bool isMoving;
+    private bool isMoving, isAttacking, isFollowing;
     private bool isInTransition;
+
+    private bool playerInRange;
 
     private float spawnPoint;
     private float currentPosition;
@@ -19,6 +24,7 @@ public class Enemy {
 
     public Enemy(GameObject enemy, int speed, int walkingRange, int hitPoints, int damage, Animator anim)
     {
+
         this.enemy = enemy;
         this.speed = speed;
         this.walkingRange = walkingRange;
@@ -59,12 +65,46 @@ public class Enemy {
         }
     }
 
+    public void followTarget()
+    {
+        if (!playerInRange)
+        {
+            Debug.Log("FOLLLOOOWWW");
+            if(currentPosition < target.transform.position.x)
+            {
+                if (!walksRight)
+                {
+                    enemy.transform.Rotate(0, 180, 0);
+                    walksRight = true;
+                }
+                currentPosition = currentPosition + 0.001f * speed;
+                enemy.transform.position = new Vector3(currentPosition, enemy.transform.position.y, enemy.transform.position.z);
+            }
+            else if(currentPosition > target.transform.position.x)
+            {
+                if (walksRight)
+                {
+                    enemy.transform.Rotate(0, 180, 0);
+                    walksRight = false;
+                }
+                currentPosition = currentPosition - 0.001f * speed;
+                enemy.transform.position = new Vector3(currentPosition, enemy.transform.position.y, enemy.transform.position.z);
+            }
+        }
+    }
+
+   public void attack()
+   {
+        Debug.Log("attackAttackAttack");
+        anim.SetTrigger("isAttacking"); 
+   }
+
     public float getCurrentPosition()
     {
         return currentPosition;
     }
 
-    private bool moving()
+    public bool moving()
     {
         return isMoving;
     }
@@ -72,6 +112,43 @@ public class Enemy {
     public void setMoving(bool moving)
     {
         isMoving = moving;
+        anim.SetBool("isMoving", moving);
+        
+    }
+
+    public bool playerIsInRange()
+    {
+        return playerInRange;
+    }
+
+    public void setPlayerInRange(bool inRange)
+    {
+        playerInRange = inRange;
+    }
+
+    public bool attacking()
+    {
+        return isAttacking;
+    }
+
+    public void setAttacking(bool attacking)
+    {
+        isAttacking = attacking;
+    }
+
+    public bool following()
+    {
+        return isFollowing;
+    }
+
+    public void setFollowing(bool following)
+    {
+        isFollowing = following;
+    }
+
+    public void setTarget(GameObject target)
+    {
+        this.target = target;
     }
 
     private bool inTransition()
