@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class wanderScript : MonoBehaviour {
+public class WanderScript : MonoBehaviour {
 
     private Vector3 wayPoint;
 
-    public wanderScript() { }
+    public WanderScript() { }
 
 	public void Wander()
     {

@@ -8,6 +8,9 @@ public class CharController : MonoBehaviour {
     public float jumpSpeed = 8.0F;
     public float gravity = 20.0F;
 
+    public bool isDying { get; set; }
+    public bool isVulnerable { get; set; }
+
     private CharacterController controller;
     private Vector3 moveDirection = Vector3.zero;
     private Animation anim;
@@ -18,6 +21,8 @@ public class CharController : MonoBehaviour {
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animation>();
         looksRight = true;
+        isDying = false;
+        isVulnerable = true;
     }
 
     void Update()
