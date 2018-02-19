@@ -1,0 +1,211 @@
+fileFormatVersion: 2
+guid: c348fdd5731e1fc419904be308903546
+timeCreated: 1509204762
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: "k\xFCrbispng"
+    21300002: "k\xFCrbispng0"
+    21300004: "k\xFCrbispng1"
+    21300006: "k\xFCrbispng2"
+    21300008: "k\xFCrbispng3"
+    21300010: "k\xFCrbispng4"
+    21300012: "k\xFCrbispng5"
+    21300014: "k\xFCrbispng6"
+    21300016: "k\xFCrbispng7"
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "k\xFCrbispng"
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 3402
+        width: 817
+        height: 693
+      alignment: 9
+      pivot: {x: 0.54467565, y: 0.45743147}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: "k\xFCrbispng0"
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2703
+        width: 816
+        height: 695
+      alignment: 9
+      pivot: {x: 0.5514706, y: 0.45755395}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: "k\xFCrbispng1"
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 2006
+        width: 815
+        height: 696
+      alignment: 9
+      pivot: {x: 0.5521472, y: 0.45689654}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: "k\xFCrbispng2"
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 3400
+        width: 817
+        height: 695
+      alignment: 9
+      pivot: {x: 0.5507956, y: 0.45755395}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: "k\xFCrbispng3"
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 2704
+        width: 816
+        height: 696
+      alignment: 9
+      pivot: {x: 0.5514706, y: 0.4597701}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: "k\xFCrbispng4"
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1309
+        width: 812
+        height: 694
+      alignment: 9
+      pivot: {x: 0.5504926, y: 0.45821327}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: "k\xFCrbispng5"
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2005
+        width: 813
+        height: 696
+      alignment: 9
+      pivot: {x: 0.5498155, y: 0.45689654}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: "k\xFCrbispng6"
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 612
+        width: 811
+        height: 695
+      alignment: 9
+      pivot: {x: 0.5511714, y: 0.45755395}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: "k\xFCrbispng7"
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 1306
+        width: 812
+        height: 698
+      alignment: 9
+      pivot: {x: 0.5578818, y: 0.4555874}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
