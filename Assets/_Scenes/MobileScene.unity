@@ -3268,7 +3268,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1309507357}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13a4be3f62eab07459da3b5aeea0a15e, type: 3}
   m_Name: 
@@ -3282,6 +3282,8 @@ MonoBehaviour:
   jumpForce: 18
   moveRight: 0
   moveLeft: 0
+  jump: 0
+  jumpheight: 0
 --- !u!95 &1309507364
 Animator:
   serializedVersion: 3
@@ -3305,7 +3307,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1309507357}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed90e482d19b8f348b06f2767ac77feb, type: 3}
   m_Name: 

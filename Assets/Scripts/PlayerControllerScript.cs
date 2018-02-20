@@ -19,8 +19,10 @@ public class PlayerControllerScript : MonoBehaviour {
     public float jumpForce = 18f;
     public bool moveRight = false;
     public bool moveLeft = false;
-    
-	void Start () {
+    public bool jump;
+    public float jumpHeight = 5.5f;
+
+    void Start () {
         rigidbody2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 	}
@@ -45,35 +47,55 @@ public class PlayerControllerScript : MonoBehaviour {
         {
             Flip();
         }
+        
     }
     //Hier soll das rein was in Control.cs steht für die Mobile inputs.
 #elif UNITY_IOS || UNITY_ANDROID || UNITY_WP8 || UNITY_IPHONE
     void FixedUpdate () {
-        
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            rigidbody2d.velocity = new Vector2(-movespeed, rigidbody2d.velocity.y);
+            rigidbody2d.velocity = new Vector2(-moveSpeed, rigidbody2d.velocity.y);
 
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            rigidbody2d.velocity = new Vector2(movespeed, rigidbody2d.velocity.y);
+            rigidbody2d.velocity = new Vector2(moveSpeed, rigidbody2d.velocity.y);
 
+        }
+
+        if (grounded && Input.GetKey(KeyCode.Space))
+        {
+            rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpHeight);
         }
 
         if (moveRight)
         {
-            rigidbody2d.velocity = new Vector2(movespeed, rigidbody2d.velocity.y);
+            if (!facingRight) Flip();
+
+            rigidbody2d.velocity = new Vector2(moveSpeed, rigidbody2d.velocity.y);
+            float i = 1;
+            anim.SetFloat("Speed", Mathf.Abs(i));
         }
+        
         if (moveLeft)
         {
-            rigidbody2d.velocity = new Vector2(-movespeed, rigidbody2d.velocity.y);
+            if (facingRight) Flip();
+
+            rigidbody2d.velocity = new Vector2(-moveSpeed, rigidbody2d.velocity.y);
+            float i = 1;
+            anim.SetFloat("Speed", Mathf.Abs(i));
+        }
+        if(grounded && jump)
+        {
+            rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpHeight);
+            jump = false;
         }
     }
 #endif
     void Update()
     {
-        if(grounded && Input.GetButton("Jump")){
+        if (grounded && Input.GetButton("Jump"))
+        {
             anim.SetBool("Ground", false);
             rigidbody2d.AddForce(new Vector2(0, jumpForce));
         }

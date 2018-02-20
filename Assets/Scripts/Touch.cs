@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Touch : MonoBehaviour {
 
-    private Controls player;
+    private PlayerControllerScript player;
 
     
     void Start()
     {
-        player = FindObjectOfType<Controls>();
+        player = FindObjectOfType<PlayerControllerScript>();
     }
     public void Jump()
     {
