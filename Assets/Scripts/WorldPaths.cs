@@ -4,13 +4,28 @@ using UnityEngine;
 
 public class WorldPaths : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    [SerializeField] private bool isLoaded;
+    [SerializeField] private bool isActive;
+    public int currentIndex;
+    public int pathCount;
+    public int pathAmount = 6;
+    public int prevIndex;
+    public int nextIndex;
+
+    void Start ()
+    {
+        GetComponentsInChildren<PathBehaviour>();
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (isLoaded && !isActive)
+        {
+            LoadAdjacentTiles();
+        }
+    }
+    void LoadAdjacentTiles()
+    {
+        int prevIndex = currentIndex - 1 < 0 ? pathCount : currentIndex - 1;
+        int nextIndex = currentIndex + 1;
+    }
 }
