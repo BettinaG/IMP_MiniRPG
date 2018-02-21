@@ -27,31 +27,35 @@ public class PlayerControllerScript : MonoBehaviour {
         anim = GetComponent<Animator>();
 	}
     //Hier steht das Zeug wie ich mein Character bewegen kann an der Tastatur
-#if UNITY_STANDALONE || UNITY_PLAYER || UNITY_EDITOR
-    void FixedUpdate () {
+
+    void FixedUpdate()
+    {
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
 
 
         move = Input.GetAxis("Horizontal");
-        
+
         anim.SetBool("Ground", grounded);
         anim.SetFloat("Speed", Mathf.Abs(move));
         anim.SetFloat("vSpeed", rigidbody2d.velocity.y);
+#if UNITY_STANDALONE || UNITY_PLAYER || UNITY_EDITOR
 
         rigidbody2d.velocity = new Vector2(move * maxSpeed, rigidbody2d.velocity.y);
 
-        if(move > 0 && !facingRight)
-        {
-            Flip();
-        }else if(move<0 && facingRight)
+        if (move > 0 && !facingRight)
         {
             Flip();
         }
-        
+        else if (move < 0 && facingRight)
+        {
+            Flip();
+        }
+
     }
+
     //Hier soll das rein was in Control.cs steht für die Mobile inputs.
 #elif UNITY_IOS || UNITY_ANDROID || UNITY_WP8 || UNITY_IPHONE
-    void FixedUpdate () {
+
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             rigidbody2d.velocity = new Vector2(-moveSpeed, rigidbody2d.velocity.y);
@@ -76,7 +80,7 @@ public class PlayerControllerScript : MonoBehaviour {
             float i = 1;
             anim.SetFloat("Speed", Mathf.Abs(i));
         }
-        
+
         if (moveLeft)
         {
             if (facingRight) Flip();
@@ -85,7 +89,7 @@ public class PlayerControllerScript : MonoBehaviour {
             float i = 1;
             anim.SetFloat("Speed", Mathf.Abs(i));
         }
-        if(grounded && jump)
+        if (grounded && jump)
         {
             rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpHeight);
             jump = false;
