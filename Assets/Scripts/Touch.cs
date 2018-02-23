@@ -11,6 +11,10 @@ public class Touch : MonoBehaviour {
     {
         player = FindObjectOfType<PlayerControllerScript>();
     }
+    public void Attack()
+    {
+        player.attacking = true;
+    }
     public void Jump()
     {
         player.jump = true;

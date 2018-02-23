@@ -21,23 +21,28 @@ public class PlayerControllerScript : MonoBehaviour {
     public bool moveLeft = false;
     public bool jump;
     public float jumpHeight = 5.5f;
+    public bool attacking = false;
+    private float attackTimer = 0;
+    private float attackCd = 0.01f;
+    public Collider2D attackTrigger;
+
 
     void Start () {
         rigidbody2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-	}
-    //Hier steht das Zeug wie ich mein Character bewegen kann an der Tastatur
-
+        attackTrigger.enabled = false;
+    }
     void FixedUpdate()
     {
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
-
 
         move = Input.GetAxis("Horizontal");
 
         anim.SetBool("Ground", grounded);
         anim.SetFloat("Speed", Mathf.Abs(move));
         anim.SetFloat("vSpeed", rigidbody2d.velocity.y);
+        anim.SetBool("Attacking", attacking);
+        //Unity Controls
 #if UNITY_STANDALONE || UNITY_PLAYER || UNITY_EDITOR
 
         rigidbody2d.velocity = new Vector2(move * maxSpeed, rigidbody2d.velocity.y);
@@ -50,10 +55,30 @@ public class PlayerControllerScript : MonoBehaviour {
         {
             Flip();
         }
+        if(Input.GetKeyDown("f")&& !attacking)
+        {
+            attacking = true;
+            attackTimer = attackCd;
 
-    }
+            attackTrigger.enabled = true;
+        }
+        if (attacking)
+        {
+            if(attackTimer> 0)
+            {
+                attackTimer -= Time.deltaTime;
+            }
+            else
+            {
+                attacking = false;
+                attackTrigger.enabled = false;
+            }
+        }
+        if (attacking)
+        {
 
-    //Hier soll das rein was in Control.cs steht für die Mobile inputs.
+        }
+        //Mobile Controls
 #elif UNITY_IOS || UNITY_ANDROID || UNITY_WP8 || UNITY_IPHONE
 
         if (Input.GetKey(KeyCode.LeftArrow))
@@ -94,8 +119,9 @@ public class PlayerControllerScript : MonoBehaviour {
             rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpHeight);
             jump = false;
         }
-    }
+        
 #endif
+    }
     void Update()
     {
         if (grounded && Input.GetButton("Jump"))
