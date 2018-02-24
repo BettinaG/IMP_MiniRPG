@@ -9,11 +9,19 @@ public class ScrollingBackground : MonoBehaviour {
     private float viewZone = 10;
     private int leftIndex;
     private int rightIndex;
-    public float backgroundSize = 3.8395f;
+    private float lastCameraX;
+
+    [Header("Background")]
+    [Space]
+    [Tooltip("Defines the Speed of the Background moving")]
+    public float parallaxSpeed;
+    [Tooltip("Defines the Size of the Background using")]
+    public float backgroundSize;
 
     void Start()
     {
         cameraTransform = Camera.main.transform;
+        lastCameraX = cameraTransform.position.x;
         layers = new Transform[transform.childCount];
         for(int i = 0; i < transform.childCount; i++)
         {
@@ -22,6 +30,18 @@ public class ScrollingBackground : MonoBehaviour {
         }
         leftIndex = 0;
         rightIndex = layers.Length - 1;
+    }
+    void Update()
+    {
+        float deltaX = cameraTransform.position.x - lastCameraX;
+        transform.position += Vector3.right * (deltaX * parallaxSpeed);
+        lastCameraX = cameraTransform.position.x;
+
+        if (cameraTransform.position.x < (layers[leftIndex].transform.position.x + viewZone))
+            ScrollLeft();
+
+        if(cameraTransform.position.x > (layers[rightIndex].transform.position.x - viewZone))
+            ScrollRight();
     }
     void ScrollLeft()
     {
@@ -35,10 +55,10 @@ public class ScrollingBackground : MonoBehaviour {
     void ScrollRight()
     {
         int lastLeft = leftIndex;
-        layers[leftIndex].position = Vector3.right * (layers[rightIndex].position.x - backgroundSize);
+        layers[leftIndex].position = Vector3.right * (layers[rightIndex].position.x + backgroundSize);
         rightIndex = leftIndex;
         leftIndex++;
-        if (leftIndex < 0)
-            leftIndex = layers.Length - 1;
+        if (leftIndex == layers.Length)
+            leftIndex = 0;
     }
 }

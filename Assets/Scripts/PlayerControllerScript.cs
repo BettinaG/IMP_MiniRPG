@@ -5,16 +5,16 @@ using UnityEngine;
 public class PlayerControllerScript : MonoBehaviour {
 
     public float maxSpeed = 10f;
-    bool facingRight = true;
+    private bool facingRight = true;
     private Rigidbody2D rigidbody2d;
     private float move;
     public float moveSpeed = 5f;
 
-    Animator anim;
+    private Animator anim;
 
-    bool grounded = false;
+    private bool grounded = false;
     public Transform groundCheck;
-    float groundRadius = 0.2f;
+    private float groundRadius = 0.2f;
     public LayerMask whatIsGround;
     public float jumpForce = 18f;
     public bool moveRight = false;
@@ -74,10 +74,6 @@ public class PlayerControllerScript : MonoBehaviour {
                 attackTrigger.enabled = false;
             }
         }
-        if (attacking)
-        {
-
-        }
         //Mobile Controls
 #elif UNITY_IOS || UNITY_ANDROID || UNITY_WP8 || UNITY_IPHONE
 
@@ -95,6 +91,13 @@ public class PlayerControllerScript : MonoBehaviour {
         if (grounded && Input.GetKey(KeyCode.Space))
         {
             rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpHeight);
+        }
+        if(Input.GetKeyDown("f")&& !attacking)
+        {
+            attacking = true;
+            attackTimer = attackCd;
+
+            attackTrigger.enabled = true;
         }
 
         if (moveRight)
@@ -118,6 +121,18 @@ public class PlayerControllerScript : MonoBehaviour {
         {
             rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpHeight);
             jump = false;
+        }
+        if (attacking)
+        {
+            if(attackTimer> 0)
+            {
+                attackTimer -= Time.deltaTime;
+            }
+            else
+            {
+                attacking = false;
+                attackTrigger.enabled = false;
+            }
         }
         
 #endif
