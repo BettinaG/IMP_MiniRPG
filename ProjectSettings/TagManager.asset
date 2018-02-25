@@ -48,3 +48,6 @@ TagManager:
   - name: Player
     uniqueID: 4194675625
     locked: 0
+  - name: Pause
+    uniqueID: 2732976869
+    locked: 0

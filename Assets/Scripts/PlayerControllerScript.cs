@@ -25,56 +25,59 @@ public class PlayerControllerScript : MonoBehaviour {
     private float attackTimer = 0;
     private float attackCd = 0.01f;
     public Collider2D attackTrigger;
-
+    public bool stopMotion;
 
     void Start () {
+        stopMotion = false;
         rigidbody2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         attackTrigger.enabled = false;
     }
     void FixedUpdate()
     {
-        grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
+        if (!stopMotion)
+        {
+            grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
 
-        move = Input.GetAxis("Horizontal");
+            move = Input.GetAxis("Horizontal");
 
-        anim.SetBool("Ground", grounded);
-        anim.SetFloat("Speed", Mathf.Abs(move));
-        anim.SetFloat("vSpeed", rigidbody2d.velocity.y);
-        anim.SetBool("Attacking", attacking);
-        //Unity Controls
+            anim.SetBool("Ground", grounded);
+            anim.SetFloat("Speed", Mathf.Abs(move));
+            anim.SetFloat("vSpeed", rigidbody2d.velocity.y);
+            anim.SetBool("Attacking", attacking);
+
+            rigidbody2d.velocity = new Vector2(move * maxSpeed, rigidbody2d.velocity.y);
+            //Unity Controls
 #if UNITY_STANDALONE || UNITY_PLAYER || UNITY_EDITOR
 
-        rigidbody2d.velocity = new Vector2(move * maxSpeed, rigidbody2d.velocity.y);
-
-        if (move > 0 && !facingRight)
-        {
-            Flip();
-        }
-        else if (move < 0 && facingRight)
-        {
-            Flip();
-        }
-        if(Input.GetKeyDown("f")&& !attacking)
-        {
-            attacking = true;
-            attackTimer = attackCd;
-
-            attackTrigger.enabled = true;
-        }
-        if (attacking)
-        {
-            if(attackTimer> 0)
+            if (move > 0 && !facingRight)
             {
-                attackTimer -= Time.deltaTime;
+                Flip();
             }
-            else
+            else if (move < 0 && facingRight)
             {
-                attacking = false;
-                attackTrigger.enabled = false;
+                Flip();
             }
-        }
-        //Mobile Controls
+            if (Input.GetKeyDown("f") && !attacking)
+            {
+                attacking = true;
+                attackTimer = attackCd;
+
+                attackTrigger.enabled = true;
+            }
+            if (attacking)
+            {
+                if (attackTimer > 0)
+                {
+                    attackTimer -= Time.deltaTime;
+                }
+                else
+                {
+                    attacking = false;
+                    attackTrigger.enabled = false;
+                }
+            }
+            //Mobile Controls
 #elif UNITY_IOS || UNITY_ANDROID || UNITY_WP8 || UNITY_IPHONE
 
         if (Input.GetKey(KeyCode.LeftArrow))
@@ -136,14 +139,19 @@ public class PlayerControllerScript : MonoBehaviour {
         }
         
 #endif
+        }
     }
     void Update()
     {
-        if (grounded && Input.GetButton("Jump"))
+        if (!stopMotion)
         {
-            anim.SetBool("Ground", false);
-            rigidbody2d.AddForce(new Vector2(0, jumpForce));
+            if (grounded && Input.GetButton("Jump"))
+            {
+                anim.SetBool("Ground", false);
+                rigidbody2d.AddForce(new Vector2(0, jumpForce));
+            }
         }
+        
     }
 
     void Flip()

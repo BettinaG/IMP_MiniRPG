@@ -5,11 +5,17 @@ using UnityEngine;
 public class Touch : MonoBehaviour {
 
     private PlayerControllerScript player;
+    private GameManager gm;
 
     
     void Start()
     {
         player = FindObjectOfType<PlayerControllerScript>();
+        gm = FindObjectOfType<GameManager>();
+    }
+    public void Pause()
+    {
+        gm.paused = true;
     }
     public void Attack()
     {
