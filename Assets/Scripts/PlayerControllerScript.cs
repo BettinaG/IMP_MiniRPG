@@ -22,8 +22,8 @@ public class PlayerControllerScript : MonoBehaviour {
     public bool jump;
     public float jumpHeight = 5.5f;
     public bool attacking = false;
-    private float attackTimer = 0;
-    private float attackCd = 0.01f;
+    public float attackTimer = 0;
+    public float attackCd = 0.01f;
     public Collider2D attackTrigger;
     public bool stopMotion;
 
@@ -47,17 +47,7 @@ public class PlayerControllerScript : MonoBehaviour {
             anim.SetBool("Attacking", attacking);
 
             rigidbody2d.velocity = new Vector2(move * maxSpeed, rigidbody2d.velocity.y);
-            //Unity Controls
-#if UNITY_STANDALONE || UNITY_PLAYER || UNITY_EDITOR
-
-            if (move > 0 && !facingRight)
-            {
-                Flip();
-            }
-            else if (move < 0 && facingRight)
-            {
-                Flip();
-            }
+            
             if (Input.GetKeyDown("f") && !attacking)
             {
                 attacking = true;
@@ -77,32 +67,32 @@ public class PlayerControllerScript : MonoBehaviour {
                     attackTrigger.enabled = false;
                 }
             }
+            //Unity Controls
+#if UNITY_STANDALONE || UNITY_PLAYER || UNITY_EDITOR
+
+            if (move > 0 && !facingRight)
+            {
+                Flip();
+            }
+            else if (move < 0 && facingRight)
+            {
+                Flip();
+            }
             //Mobile Controls
 #elif UNITY_IOS || UNITY_ANDROID || UNITY_WP8 || UNITY_IPHONE
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             rigidbody2d.velocity = new Vector2(-moveSpeed, rigidbody2d.velocity.y);
-
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
             rigidbody2d.velocity = new Vector2(moveSpeed, rigidbody2d.velocity.y);
-
         }
-
         if (grounded && Input.GetKey(KeyCode.Space))
         {
             rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpHeight);
         }
-        if(Input.GetKeyDown("f")&& !attacking)
-        {
-            attacking = true;
-            attackTimer = attackCd;
-
-            attackTrigger.enabled = true;
-        }
-
         if (moveRight)
         {
             if (!facingRight) Flip();
@@ -111,7 +101,6 @@ public class PlayerControllerScript : MonoBehaviour {
             float i = 1;
             anim.SetFloat("Speed", Mathf.Abs(i));
         }
-
         if (moveLeft)
         {
             if (facingRight) Flip();
@@ -125,19 +114,6 @@ public class PlayerControllerScript : MonoBehaviour {
             rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpHeight);
             jump = false;
         }
-        if (attacking)
-        {
-            if(attackTimer> 0)
-            {
-                attackTimer -= Time.deltaTime;
-            }
-            else
-            {
-                attacking = false;
-                attackTrigger.enabled = false;
-            }
-        }
-        
 #endif
         }
     }

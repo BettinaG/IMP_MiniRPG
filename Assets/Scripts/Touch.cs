@@ -20,6 +20,8 @@ public class Touch : MonoBehaviour {
     public void Attack()
     {
         player.attacking = true;
+        player.attackTimer = player.attackCd;
+        player.attackTrigger.enabled = true;
     }
     public void Jump()
     {

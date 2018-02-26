@@ -10,14 +10,20 @@ public class HealthController : MonoBehaviour {
     public bool isAlive;
     public bool isDying;
     public bool isDead;
+    public bool isVulnerable;
 
+
+    [SerializeField]
+    private Vector2 knockBackForce;
 
     private GameManager gm;
     private Animator anim;
     private PlayerControllerScript player;
+    private Rigidbody2D rb2d;
 
     void Start()
     {
+        isVulnerable = true;
         isDead = false;
         isDying = false;
         isAlive = true;
@@ -25,6 +31,7 @@ public class HealthController : MonoBehaviour {
         anim = GetComponent<Animator>();
         gm = FindObjectOfType<GameManager>();
         player = FindObjectOfType<PlayerControllerScript>();
+        rb2d = GetComponent<Rigidbody2D>();
     }
     void Update()
     {
@@ -32,18 +39,11 @@ public class HealthController : MonoBehaviour {
         {
             curHealth = maxHealth;
         }
-        if(curHealth <= 0)
-        {
-            isDying = true;
-
-        }
         if (isDying)
         {
-
             isAlive = false;
             Die();
             isDying = false;
-            
         }
     }
     void Die()
@@ -60,7 +60,6 @@ public class HealthController : MonoBehaviour {
             {
                 Destroy(gameObject);
             }
-            
         }
     }
     IEnumerator HandleGameOver()
@@ -70,4 +69,34 @@ public class HealthController : MonoBehaviour {
         yield return new WaitForSeconds(5f);
         gm.Restart();
     }
+    public void TakeDamage(int dmg)
+    {
+        if(isVulnerable)
+            curHealth -= dmg;
+        if(curHealth <= 0 && isAlive)
+        {
+            curHealth = 0;
+            isDying = true;
+            isAlive = false;
+        }
+        if (isAlive && isPlayer)
+        {
+            StartCoroutine(Knockback());
+        }
+        
+    }
+    public IEnumerator Knockback()
+    {
+        isVulnerable = false;
+        anim.SetTrigger("vulnerable");
+        rb2d.AddForce(knockBackForce, ForceMode2D.Impulse);
+        while(rb2d.velocity != Vector2.zero)
+        {
+            yield return null;
+        }
+        isVulnerable = true;
+
+        
+    }
+    
 }
