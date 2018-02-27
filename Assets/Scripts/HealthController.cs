@@ -65,7 +65,6 @@ public class HealthController : MonoBehaviour {
     IEnumerator HandleGameOver()
     {
         anim.SetTrigger("dies");
-        Debug.Log("Tod");
         yield return new WaitForSeconds(5f);
         gm.Restart();
     }

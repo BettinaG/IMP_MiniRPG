@@ -11,6 +11,7 @@ public class PlayerControllerScript : MonoBehaviour {
     public float moveSpeed = 5f;
 
     private Animator anim;
+    private GameManager gm;
 
     private bool grounded = false;
     public Transform groundCheck;
@@ -32,6 +33,7 @@ public class PlayerControllerScript : MonoBehaviour {
         rigidbody2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         attackTrigger.enabled = false;
+        gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
     void FixedUpdate()
     {
@@ -136,5 +138,13 @@ public class PlayerControllerScript : MonoBehaviour {
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.CompareTag("Rubberduck"))
+        {
+            Destroy(collider.gameObject);
+            gm.points += 1;
+        }
     }
 }

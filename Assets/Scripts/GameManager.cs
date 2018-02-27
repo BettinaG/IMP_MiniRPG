@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
@@ -9,6 +10,9 @@ public class GameManager : MonoBehaviour {
 
     public GameObject PauseUI;
     public GameObject PlayerControls;
+
+    public int points;
+    public Text pointsText;
 
     public bool paused = false;
 
@@ -35,6 +39,7 @@ public class GameManager : MonoBehaviour {
             PauseUI.SetActive(false);
             Time.timeScale = 1;
         }
+        pointsText.text = ("" + points);
     }
     public void Resume()
     {
