@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
 
     public int points;
     public Text pointsText;
+    public Text doorText;
 
     public bool paused = false;
 
@@ -20,6 +21,8 @@ public class GameManager : MonoBehaviour {
     {
         PlayerControls.SetActive(true);
         PauseUI.SetActive(false);
+
+        doorText.text = ("");
     }
     void Update()
     {

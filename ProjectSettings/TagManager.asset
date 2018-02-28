@@ -7,6 +7,14 @@ TagManager:
   - Enemy
   - Rubberduck
   - GameManager
+  - Castle
+  - Speakbubble
+  - bubble0
+  - bubble1
+  - bubble2
+  - bubble3
+  - bubble4
+  - bubble5
   layers:
   - Default
   - TransparentFX
@@ -18,7 +26,7 @@ TagManager:
   - 
   - Player
   - ground
-  - 
+  - Building
   - 
   - 
   - 
@@ -43,6 +51,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Builduing
+    uniqueID: 2933945013
     locked: 0
   - name: ground
     uniqueID: 302485205

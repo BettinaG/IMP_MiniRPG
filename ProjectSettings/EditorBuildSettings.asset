@@ -5,9 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Scenes/titleMenu.unity
     guid: b2a1fbb910514fe41bae1c3e20504880
   - enabled: 1
     path: Assets/_Scenes/MobileScene.unity
     guid: 34a18105913bd3a47af8159ca361460f
+  - enabled: 0
+    path: Assets/_Scenes/DuckBossScene.unity
+    guid: 6a927ef452327534e8c348b144e91a1c
+  - enabled: 1
+    path: Assets/_Scenes/MobileScene 1.unity
+    guid: b004f2e49f38c034f9d7bcc0886e7ca6
