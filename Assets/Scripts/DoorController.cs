@@ -21,7 +21,7 @@ public class DoorController : MonoBehaviour {
     {
         if (collider.CompareTag("Player"))
         {
-            gm.doorText.text = ("Press 'Attack' to enter");
+            UI.INSTANCE.doorText.text = ("Press 'Attack' to enter");
             if (isCastle)
             {
                 if(player.attacking && gm.points >= 100)
@@ -30,7 +30,7 @@ public class DoorController : MonoBehaviour {
                 }
                 else if (player.attacking && gm.points < 100)
                 {
-                    gm.doorText.text = ("You need 100 Rubberducks to pass!");
+                    UI.INSTANCE.doorText.text = ("You need 100 Rubberducks to pass!");
                 }
             }
             else
@@ -51,10 +51,11 @@ public class DoorController : MonoBehaviour {
                 if (player.attacking && gm.points >= 100)
                 {
                     SceneManager.LoadScene(loadLevel);
+                    UI.INSTANCE.doorText.text = ("");
                 }
                 else if (gm.points < 100)
                 {
-                    gm.doorText.text = ("You need 100 Rubberducks to pass!");
+                    UI.INSTANCE.doorText.text = ("You need 100 Rubberducks to pass!");
                 }
             }
             else
@@ -62,12 +63,13 @@ public class DoorController : MonoBehaviour {
                 if (player.attacking)
             {
                     SceneManager.LoadScene(loadLevel);
+                    UI.INSTANCE.doorText.text = ("");
                 }
             }
         }
     }
     void OnTriggerExit2D(Collider2D collider)
     {
-        gm.doorText.text = ("");    
+        UI.INSTANCE.doorText.text = ("");    
     }
 }

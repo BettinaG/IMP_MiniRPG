@@ -5,20 +5,32 @@ using UnityEngine;
 
 public class PlayerUI : MonoBehaviour {
 
+    public static PlayerUI INSTANCE;
+
     public Sprite[] PumpkinSprites;
 
     public Image PumpkinUI;
+    
 
-    private PlayerControllerScript player;
-    private HealthController pHealth;
-
-    void Start()
+    void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerScript>();
-        pHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthController>();
+        if (INSTANCE == null)
+        {
+            INSTANCE = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
+
     }
     void Update()
     {
-        PumpkinUI.sprite = PumpkinSprites[pHealth.curHealth];
+        if(HealthController.INSTANCE.curHealth < 0)
+        {
+            HealthController.INSTANCE.curHealth = 0;
+        }
+        UI.INSTANCE.health.sprite = PumpkinSprites[HealthController.INSTANCE.curHealth];
     }
 }

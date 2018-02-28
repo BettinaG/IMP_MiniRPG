@@ -7,7 +7,6 @@ public class CameraFollow : MonoBehaviour {
     public float interpVelocity;
     public float minDistance;
     public float followDistance;
-    public GameObject target;
     public Vector3 offset;
     Vector3 targetPos;
     // Use this for initialization
@@ -19,12 +18,12 @@ public class CameraFollow : MonoBehaviour {
     // Update is called once per frame
     void LateUpdate()
     {
-        if (target)
+        if (PlayerControllerScript.INSTANCE.gameObject)
         {
             Vector3 posNoZ = transform.position;
-            posNoZ.z = target.transform.position.z;
+            posNoZ.z = PlayerControllerScript.INSTANCE.gameObject.transform.position.z;
 
-            Vector3 targetDirection = (target.transform.position - posNoZ);
+            Vector3 targetDirection = (PlayerControllerScript.INSTANCE.gameObject.transform.position - posNoZ);
 
             interpVelocity = targetDirection.magnitude * 15f;
 

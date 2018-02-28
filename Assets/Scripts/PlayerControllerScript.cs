@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerControllerScript : MonoBehaviour {
 
+    public static PlayerControllerScript INSTANCE; 
+
     public float maxSpeed = 10f;
     private bool facingRight = true;
     private Rigidbody2D rigidbody2d;
@@ -28,6 +30,19 @@ public class PlayerControllerScript : MonoBehaviour {
     public Collider2D attackTrigger;
     public bool stopMotion;
 
+    void Awake()
+    {
+        if (INSTANCE == null)
+        {
+            INSTANCE = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
+
+    }
     void Start () {
         stopMotion = false;
         rigidbody2d = GetComponent<Rigidbody2D>();

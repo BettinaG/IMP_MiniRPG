@@ -234,7 +234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4189746553362386
 Transform:
   m_ObjectHideFlags: 1
@@ -268,7 +268,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1185591612282008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.2, y: -0.7, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 4738236016514994}
@@ -349,7 +349,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.75, y: 0.12}
+  m_Offset: {x: 3.65, y: 0.12}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -360,7 +360,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.54, y: 6.06}
+  m_Size: {x: 4.34, y: 6.06}
   m_EdgeRadius: 0
 --- !u!95 &95208895858767084
 Animator:
@@ -518,13 +518,15 @@ MonoBehaviour:
   groundCheck: {fileID: 4738236016514994}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 4294966015
   jumpForce: 34.17
   moveRight: 0
   moveLeft: 0
   jump: 0
   jumpHeight: 5.5
   attacking: 0
+  attackTimer: 0
+  attackCd: 0.01
   attackTrigger: {fileID: 61313778404239908}
   stopMotion: 0
 --- !u!114 &114438923251401710
@@ -748,7 +750,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -100291671
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c348fdd5731e1fc419904be308903546, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

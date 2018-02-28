@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HealthController : MonoBehaviour {
 
+    public static HealthController INSTANCE;
+
     public bool isPlayer;
     public int curHealth;
     public int maxHealth = 5;
@@ -21,6 +23,19 @@ public class HealthController : MonoBehaviour {
     private PlayerControllerScript player;
     private Rigidbody2D rb2d;
 
+    void Awake()
+    {
+        if (INSTANCE == null)
+        {
+            INSTANCE = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
+
+    }
     void Start()
     {
         isVulnerable = true;

@@ -17,3 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/MobileScene 1.unity
     guid: b004f2e49f38c034f9d7bcc0886e7ca6
+  - enabled: 1
+    path: Assets/_Scenes/Win.unity
+    guid: f229fedd06f608a4cb30cafb4f7c4db7

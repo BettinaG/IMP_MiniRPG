@@ -71,8 +71,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98e7b971b6e79ff429e8ba3e574a5dc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PauseUI: {fileID: 0}
-  PlayerControls: {fileID: 0}
+  PauseUI: {fileID: 1600316810905136, guid: 322391e3bfc36c7459d601e81908aa9b, type: 2}
+  PlayerControls: {fileID: 1524746592416614, guid: 769326cb55e506040be40591188b86af,
+    type: 2}
   points: 0
   pointsText: {fileID: 0}
   doorText: {fileID: 0}
