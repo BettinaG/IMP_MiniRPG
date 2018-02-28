@@ -4,20 +4,15 @@ using UnityEngine;
 
 public class Zombie : MonoBehaviour {
     
-    public GameObject target; //the enemy's target
-    public float moveSpeed = 5; //move speed
-    public float rotationSpeed = 5; //speed of turning
     public int dmg = 1;
     public int curHealth;
     public int maxHealth = 2;
 
-
-
-    void Start()
+    private void Start()
     {
         curHealth = maxHealth;
     }
-    void Update ()
+    private void Update ()
     {
             if (curHealth > maxHealth)
             {
@@ -28,9 +23,9 @@ public class Zombie : MonoBehaviour {
                 Destroy(gameObject);
             }
     }
-    void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.isTrigger != true && collider.CompareTag("Player"))
+        if (!collider.isTrigger && collider.CompareTag("Player"))
         {
             collider.SendMessageUpwards("TakeDamage", dmg);
         }

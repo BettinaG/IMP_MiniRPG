@@ -10,7 +10,7 @@ public class Loader : MonoBehaviour {
     public GameObject gm;
     public GameObject eventSystem;
 
-    void Awake()
+    public void Awake()
     {
         if(GameManager.INSTANCE == null)
         {

@@ -6,13 +6,10 @@ using UnityEngine;
 public class PlayerUI : MonoBehaviour {
 
     public static PlayerUI INSTANCE;
-
     public Sprite[] PumpkinSprites;
-
     public Image PumpkinUI;
-    
 
-    void Awake()
+    private void Awake()
     {
         if (INSTANCE == null)
         {
@@ -25,7 +22,7 @@ public class PlayerUI : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
 
     }
-    void Update()
+    private void Update()
     {
         if(HealthController.INSTANCE.curHealth < 0)
         {

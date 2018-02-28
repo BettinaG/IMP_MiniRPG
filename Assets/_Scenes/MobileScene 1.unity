@@ -4835,12 +4835,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ducks: 20
   count: 0
-  bubble0: {fileID: 940371083}
-  bubble1: {fileID: 1274146002}
-  bubble2: {fileID: 2002509287}
-  bubble3: {fileID: 472691291}
-  bubble4: {fileID: 1947599820}
-  bubble5: {fileID: 1947795943}
+  bubbles:
+  - {fileID: 940371083}
+  - {fileID: 1274146002}
+  - {fileID: 2002509287}
+  - {fileID: 472691291}
+  - {fileID: 1947599820}
+  - {fileID: 1947795943}
 --- !u!70 &1731044024
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

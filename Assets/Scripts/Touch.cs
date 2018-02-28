@@ -8,14 +8,15 @@ public class Touch : MonoBehaviour {
     private GameManager gm;
 
     
-    void Start()
+    private void Start()
     {
         player = FindObjectOfType<PlayerControllerScript>();
         gm = FindObjectOfType<GameManager>();
     }
     public void Pause()
     {
-        gm.paused = true;
+        gm.isPaused = true;
+        gm.Pause();
     }
     public void Attack()
     {

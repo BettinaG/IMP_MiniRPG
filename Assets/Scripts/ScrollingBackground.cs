@@ -18,7 +18,7 @@ public class ScrollingBackground : MonoBehaviour {
     [Tooltip("Defines the Size of the Background using")]
     public float backgroundSize;
 
-    void Start()
+    private void Start()
     {
         cameraTransform = Camera.main.transform;
         lastCameraX = cameraTransform.position.x;
@@ -31,7 +31,7 @@ public class ScrollingBackground : MonoBehaviour {
         leftIndex = 0;
         rightIndex = layers.Length - 1;
     }
-    void Update()
+    private void Update()
     {
         float deltaX = cameraTransform.position.x - lastCameraX;
         transform.position += Vector3.right * (deltaX * parallaxSpeed);
@@ -43,7 +43,7 @@ public class ScrollingBackground : MonoBehaviour {
         if(cameraTransform.position.x > (layers[rightIndex].transform.position.x - viewZone))
             ScrollRight();
     }
-    void ScrollLeft()
+    private void ScrollLeft()
     {
         int lastRight = rightIndex;
         layers[rightIndex].position = Vector3.right * (layers[leftIndex].position.x - backgroundSize);
@@ -52,7 +52,7 @@ public class ScrollingBackground : MonoBehaviour {
         if (rightIndex < 0)
             rightIndex = layers.Length - 1;
     }
-    void ScrollRight()
+    private void ScrollRight()
     {
         int lastLeft = leftIndex;
         layers[leftIndex].position = Vector3.right * (layers[rightIndex].position.x + backgroundSize);

@@ -7,18 +7,7 @@ public class PlayerControllerScript : MonoBehaviour {
     public static PlayerControllerScript INSTANCE; 
 
     public float maxSpeed = 10f;
-    private bool facingRight = true;
-    private Rigidbody2D rigidbody2d;
-    private float move;
     public float moveSpeed = 5f;
-
-    private Animator anim;
-    private GameManager gm;
-
-    private bool grounded = false;
-    public Transform groundCheck;
-    private float groundRadius = 0.2f;
-    public LayerMask whatIsGround;
     public float jumpForce = 18f;
     public bool moveRight = false;
     public bool moveLeft = false;
@@ -27,10 +16,22 @@ public class PlayerControllerScript : MonoBehaviour {
     public bool attacking = false;
     public float attackTimer = 0;
     public float attackCd = 0.01f;
-    public Collider2D attackTrigger;
     public bool stopMotion;
 
-    void Awake()
+    public Transform groundCheck;
+    public Collider2D attackTrigger;
+    public LayerMask whatIsGround;
+
+    private float groundRadius = 0.2f;
+    private bool grounded = false;
+    private float move;
+    private bool facingRight = true;
+
+    private Rigidbody2D rigidbody2d;
+    private Animator anim;
+    private GameManager gm;
+
+    private void Awake()
     {
         if (INSTANCE == null)
         {
@@ -43,14 +44,14 @@ public class PlayerControllerScript : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
 
     }
-    void Start () {
+    private void Start () {
         stopMotion = false;
         rigidbody2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         attackTrigger.enabled = false;
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (!stopMotion)
         {
@@ -134,7 +135,7 @@ public class PlayerControllerScript : MonoBehaviour {
 #endif
         }
     }
-    void Update()
+    private void Update()
     {
         if (!stopMotion)
         {
@@ -147,14 +148,14 @@ public class PlayerControllerScript : MonoBehaviour {
         
     }
 
-    void Flip()
+    private void Flip()
     {
         facingRight = !facingRight;
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
     }
-    void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Rubberduck"))
         {

@@ -23,7 +23,7 @@ public class HealthController : MonoBehaviour {
     private PlayerControllerScript player;
     private Rigidbody2D rb2d;
 
-    void Awake()
+    private void Awake()
     {
         if (INSTANCE == null)
         {
@@ -36,7 +36,7 @@ public class HealthController : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
 
     }
-    void Start()
+    private void Start()
     {
         isVulnerable = true;
         isDead = false;
@@ -48,7 +48,7 @@ public class HealthController : MonoBehaviour {
         player = FindObjectOfType<PlayerControllerScript>();
         rb2d = GetComponent<Rigidbody2D>();
     }
-    void Update()
+    private void Update()
     {
         if(curHealth > maxHealth)
         {
@@ -61,7 +61,7 @@ public class HealthController : MonoBehaviour {
             isDying = false;
         }
     }
-    void Die()
+    private void Die()
     {
         if (!isAlive && !isDead)
         {
@@ -77,7 +77,7 @@ public class HealthController : MonoBehaviour {
             }
         }
     }
-    IEnumerator HandleGameOver()
+    private IEnumerator HandleGameOver()
     {
         anim.SetTrigger("dies");
         yield return new WaitForSeconds(5f);

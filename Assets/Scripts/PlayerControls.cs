@@ -7,7 +7,7 @@ public class PlayerControls : MonoBehaviour {
     public GameObject Controls;
     public static PlayerControls INSTANCE;
 
-    void Awake()
+    private void Awake()
     {
         if (INSTANCE == null)
         {

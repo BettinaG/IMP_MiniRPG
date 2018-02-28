@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Death : MonoBehaviour {
 
-    void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.isTrigger != true && collider.CompareTag("Player"))
+        if (!collider.isTrigger && collider.CompareTag("Player"))
         {
             GameManager.INSTANCE.Restart();
         }

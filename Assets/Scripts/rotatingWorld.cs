@@ -6,7 +6,7 @@ public class RotatingWorld : MonoBehaviour {
 
     public float rotationSpeed;
     
-	void Update () {
+	private void Update () {
         transform.Rotate(Vector3.back * Time.deltaTime * rotationSpeed);
 	}
 }

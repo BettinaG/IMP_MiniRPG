@@ -11,7 +11,7 @@ public class UI : MonoBehaviour {
     public Image health;
     public GameObject pUI;
 
-    void Awake()
+    private void Awake()
     {
         if (INSTANCE == null)
         {

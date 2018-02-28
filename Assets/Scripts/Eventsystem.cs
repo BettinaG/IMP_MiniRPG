@@ -6,7 +6,7 @@ public class Eventsystem : MonoBehaviour {
 
     public static Eventsystem INSTANCE;
 
-    void Awake()
+    private void Awake()
     {
         if (INSTANCE == null)
         {

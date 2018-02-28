@@ -5715,6 +5715,7 @@ GameObject:
   - component: {fileID: 456368828}
   - component: {fileID: 456368827}
   - component: {fileID: 456368831}
+  - component: {fileID: 456368832}
   m_Layer: 0
   m_Name: log-platforms_1
   m_TagString: Untagged
@@ -5746,7 +5747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d64450989285b984d9dc37d43a0db40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platform: {fileID: 456368825}
+  rb2d: {fileID: 456368832}
 --- !u!251 &456368828
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -5857,6 +5858,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.8, y: 1.4906783}
   m_EdgeRadius: 0
+--- !u!50 &456368832
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 456368825}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!4 &456525542 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4354469224827226, guid: 1721f430a7171104f9a605ed7ef5b6de,
@@ -20571,6 +20592,7 @@ MonoBehaviour:
   minDistance: 0
   followDistance: 0
   offset: {x: -0.02, y: 0, z: 0}
+  targetPos: {x: 0, y: 0, z: 0}
 --- !u!114 &1701833080
 MonoBehaviour:
   m_ObjectHideFlags: 0

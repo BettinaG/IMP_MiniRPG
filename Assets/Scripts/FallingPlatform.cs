@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class FallingPlatform : MonoBehaviour {
 
-    public GameObject platform;
+    public Rigidbody2D rb2d;
 
-    void Start()
+    private void Start()
     {
-
+        rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
     }
-    void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.isTrigger != true && collider.CompareTag("Player"))
+        if (!collider.isTrigger && collider.CompareTag("Player"))
         {
             StartCoroutine(Fall());
         }
     }
-    IEnumerator Fall()
+    private IEnumerator Fall()
     {
         yield return new WaitForSeconds(1f);
-        platform.AddComponent<Rigidbody2D>();
+        rb2d.constraints = RigidbodyConstraints2D.None;
     }
 }

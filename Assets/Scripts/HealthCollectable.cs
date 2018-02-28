@@ -4,19 +4,16 @@ using UnityEngine;
 
 public class HealthCollectable : MonoBehaviour {
 
-    void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.isTrigger != true && collider.CompareTag("Player"))
+        if (!collider.isTrigger && collider.CompareTag("Player") && HealthController.INSTANCE.curHealth < 5)
         {
-            if(HealthController.INSTANCE.curHealth >= 5)
-            {
-                return;
-            }
-            else if(HealthController.INSTANCE.curHealth < 5)
-            {
                 HealthController.INSTANCE.curHealth += 1;
                 Destroy(gameObject);
-            }
+        }
+        else
+        {
+            return;
         }
     }
 }

@@ -11,13 +11,13 @@ public class DoorController : MonoBehaviour {
     public int loadLevel;
     public bool isCastle;
 
-    void Start()
+    private void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerScript>();
 
     }
-    void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Player"))
         {
@@ -42,7 +42,7 @@ public class DoorController : MonoBehaviour {
             }
         }
     }
-    void OnTriggerStay2D(Collider2D collider)
+    private void OnTriggerStay2D(Collider2D collider)
     {
         if (collider.CompareTag("Player"))
         {
@@ -68,7 +68,7 @@ public class DoorController : MonoBehaviour {
             }
         }
     }
-    void OnTriggerExit2D(Collider2D collider)
+    private void OnTriggerExit2D(Collider2D collider)
     {
         UI.INSTANCE.doorText.text = ("");    
     }

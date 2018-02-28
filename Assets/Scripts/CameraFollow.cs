@@ -4,19 +4,22 @@ using System.Collections.Generic;
 
 public class CameraFollow : MonoBehaviour {
 
-    public float interpVelocity;
-    public float minDistance;
-    public float followDistance;
-    public Vector3 offset;
-    Vector3 targetPos;
-    // Use this for initialization
-    void Start()
+    [SerializeField]
+    private float interpVelocity;
+    [SerializeField]
+    private float minDistance;
+    [SerializeField]
+    private float followDistance;
+    [SerializeField]
+    private Vector3 offset;
+    [SerializeField]
+    private Vector3 targetPos;
+    
+    private void Start()
     {
         targetPos = transform.position;
     }
-
-    // Update is called once per frame
-    void LateUpdate()
+    private void LateUpdate()
     {
         if (PlayerControllerScript.INSTANCE.gameObject)
         {
